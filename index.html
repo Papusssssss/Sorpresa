@@ -1,0 +1,624 @@
+index.html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sorpresaaaaaa</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: radial-gradient(circle, #302600, #050505 75%);
+            color: white;
+            font-family: Georgia, serif;
+            overflow: hidden;
+        }
+
+        /* =========================
+           PANTALLA INICIAL
+        ========================= */
+
+        #inicio {
+            position: fixed;
+            inset: 0;
+            background: #050505;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            z-index: 100;
+
+            transition: opacity 1.5s ease;
+        }
+
+        .inicio-contenido {
+            text-align: center;
+        }
+
+        .inicio-contenido h1 {
+            color: #fafaf7;
+            font-size: 38px;
+            margin-bottom: 35px;
+
+            text-shadow:
+                0 0 10px #fafaf7,
+                0 0 25px #ffd21f;
+        }
+
+        /* BOTÓN */
+
+        .boton {
+            border: none;
+            padding: 17px 35px;
+
+            border-radius: 40px;
+
+            background: #fafaf7;
+            color: #332600;
+
+            font-size: 19px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 0 15px #ffd21f,
+                0 0 30px rgba(255, 210, 31, 0.4);
+
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+            transform: scale(1.08);
+
+            box-shadow:
+                0 0 25px #ffd21f,
+                0 0 50px rgba(255, 210, 31, 0.6);
+        }
+
+        /* =========================
+           ESCENA
+        ========================= */
+
+        #escena {
+            min-height: 100vh;
+
+            display: none;
+
+            justify-content: center;
+            align-items: center;
+
+            flex-direction: column;
+
+            position: relative;
+        }
+
+        /* =========================
+           ROSA
+        ========================= */
+
+        .rosa {
+            position: relative;
+
+            width: 230px;
+            height: 390px;
+
+            transform: scale(0);
+        }
+
+        .rosa.animar {
+            animation: aparecerRosa 1.5s ease forwards;
+        }
+
+        @keyframes aparecerRosa {
+
+            0% {
+                transform: scale(0);
+            }
+
+            70% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+
+        }
+
+        /* TALLO */
+
+        .tallo {
+            position: absolute;
+
+            width: 9px;
+            height: 220px;
+
+            left: 50%;
+            bottom: 0;
+
+            transform: translateX(-50%) scaleY(0);
+
+            transform-origin: bottom;
+
+            background: linear-gradient(
+                to right,
+                #174d1d,
+                #4c9b43,
+                #174d1d
+            );
+
+            border-radius: 10px;
+        }
+
+        .animar .tallo {
+            animation: crecerTallo 2s ease forwards;
+        }
+
+        @keyframes crecerTallo {
+
+            from {
+                transform: translateX(-50%) scaleY(0);
+            }
+
+            to {
+                transform: translateX(-50%) scaleY(1);
+            }
+
+        }
+
+        /* =========================
+           HOJAS
+        ========================= */
+
+        .hoja {
+            position: absolute;
+
+            width: 70px;
+            height: 32px;
+
+            background: linear-gradient(
+                135deg,
+                #4c9b43,
+                #174d1d
+            );
+
+            border-radius: 100% 0;
+
+            opacity: 0;
+        }
+
+        .hoja1 {
+            left: 25px;
+            bottom: 100px;
+            transform: rotate(-25deg);
+        }
+
+        .hoja2 {
+            right: 20px;
+            bottom: 150px;
+            transform: rotate(205deg);
+        }
+
+        .animar .hoja1 {
+            animation: aparecerHoja 1s ease forwards 1.5s;
+        }
+
+        .animar .hoja2 {
+            animation: aparecerHoja 1s ease forwards 1.8s;
+        }
+
+        @keyframes aparecerHoja {
+
+            from {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            to {
+                opacity: 1;
+            }
+
+        }
+
+        /* =========================
+           FLOR
+        ========================= */
+
+        .flor {
+            position: absolute;
+
+            width: 170px;
+            height: 170px;
+
+            left: 30px;
+            top: 10px;
+        }
+
+        /* PÉTALOS */
+
+        .petalo {
+            position: absolute;
+
+            width: 85px;
+            height: 115px;
+
+            left: 42px;
+            top: 28px;
+
+            background: radial-gradient(
+                ellipse,
+                #fff27a,
+                #ffd21f 55%,
+                #e5a900
+            );
+
+            border-radius: 50%;
+
+            transform-origin: 43px 65px;
+
+            opacity: 0;
+
+            box-shadow:
+                0 0 15px rgba(255, 210, 31, 0.7);
+        }
+
+        .animar .petalo {
+            animation: florecer 1s ease forwards;
+        }
+
+        .animar .p1 {
+            transform: rotate(0deg) translateY(-25px);
+            animation-delay: 2s;
+        }
+
+        .animar .p2 {
+            transform: rotate(60deg) translateY(-25px);
+            animation-delay: 2.15s;
+        }
+
+        .animar .p3 {
+            transform: rotate(120deg) translateY(-25px);
+            animation-delay: 2.3s;
+        }
+
+        .animar .p4 {
+            transform: rotate(180deg) translateY(-25px);
+            animation-delay: 2.45s;
+        }
+
+        .animar .p5 {
+            transform: rotate(240deg) translateY(-25px);
+            animation-delay: 2.6s;
+        }
+
+        .animar .p6 {
+            transform: rotate(300deg) translateY(-25px);
+            animation-delay: 2.75s;
+        }
+
+        @keyframes florecer {
+
+            from {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            to {
+                opacity: 1;
+            }
+
+        }
+
+        /* CENTRO */
+
+        .centro {
+            position: absolute;
+
+            width: 55px;
+            height: 55px;
+
+            left: 58px;
+            top: 58px;
+
+            border-radius: 50%;
+
+            background: radial-gradient(
+                circle,
+                #fff27a,
+                #e5a900
+            );
+
+            box-shadow:
+                0 0 25px #ffd21f;
+
+            opacity: 0;
+
+            z-index: 10;
+        }
+
+        .animar .centro {
+            animation: aparecerCentro 1s ease forwards 3.2s;
+        }
+
+        @keyframes aparecerCentro {
+
+            from {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+        }
+
+        /* =========================
+           MENSAJE
+        ========================= */
+
+        #mensaje {
+
+            text-align: center;
+
+            max-width: 700px;
+
+            padding: 20px;
+
+            opacity: 0;
+        }
+
+        #mensaje.mostrar {
+            animation: aparecerMensaje 2s ease forwards;
+        }
+
+        #titulo {
+            color: #ffd21f;
+
+            font-size: clamp(30px, 6vw, 50px);
+
+            margin: 0 0 15px;
+
+            text-shadow:
+                0 0 10px #ffd21f,
+                0 0 25px #ffd21f;
+        }
+
+        #texto {
+            font-size: clamp(17px, 3vw, 23px);
+
+            line-height: 1.7;
+
+            white-space: pre-line;
+        }
+
+        @keyframes aparecerMensaje {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        /* =========================
+           BRILLOS
+        ========================= */
+
+        .brillo {
+
+            position: absolute;
+
+            width: 5px;
+            height: 5px;
+
+            background: #fff5a0;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 15px #ffd21f;
+
+            opacity: 0;
+        }
+
+        .animar .brillo {
+            animation: brillo 3s infinite;
+        }
+
+        .b1 {
+            left: 15%;
+            top: 25%;
+            animation-delay: 3s !important;
+        }
+
+        .b2 {
+            left: 80%;
+            top: 30%;
+            animation-delay: 3.5s !important;
+        }
+
+        .b3 {
+            left: 25%;
+            top: 60%;
+            animation-delay: 4s !important;
+        }
+
+        .b4 {
+            left: 75%;
+            top: 65%;
+            animation-delay: 4.5s !important;
+        }
+
+        .b5 {
+            left: 50%;
+            top: 15%;
+            animation-delay: 5s !important;
+        }
+
+        @keyframes brillo {
+
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(2);
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         INICIO
+    ========================== -->
+
+    <div id="inicio">
+
+        <div class="inicio-contenido">
+
+            <h1>Confia recien me acorde de como hacer esto 😁</h1>
+
+            <button class="boton" onclick="empezar()">
+                Haz clic aquí 👍
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ESCENA
+    ========================== -->
+
+    <div id="escena">
+
+
+        <!-- ROSA -->
+
+        <div class="rosa" id="rosa">
+
+            <div class="flor">
+
+                <div class="petalo p1"></div>
+                <div class="petalo p2"></div>
+                <div class="petalo p3"></div>
+                <div class="petalo p4"></div>
+                <div class="petalo p5"></div>
+                <div class="petalo p6"></div>
+
+                <div class="centro"></div>
+
+            </div>
+
+
+            <div class="tallo"></div>
+
+            <div class="hoja hoja1"></div>
+            <div class="hoja hoja2"></div>
+
+        </div>
+
+
+        <!-- BRILLOS -->
+
+        <div class="brillo b1"></div>
+        <div class="brillo b2"></div>
+        <div class="brillo b3"></div>
+        <div class="brillo b4"></div>
+        <div class="brillo b5"></div>
+
+
+        <!-- MENSAJE -->
+
+        <div id="mensaje">
+
+            <h1 id="titulo">
+                Feliz dia de la amistad y del estudiante 
+            </h1>
+
+            <p id="texto">
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <script>
+
+        function empezar() {
+
+            // Ocultar pantalla inicial
+
+            document.getElementById("inicio").style.opacity = "0";
+
+
+            // Después de la transición
+
+            setTimeout(function() {
+
+                document.getElementById("inicio").style.display = "none";
+
+
+                // Mostrar escena
+
+                document.getElementById("escena").style.display = "flex";
+
+
+                // Iniciar rosa
+
+                setTimeout(function() {
+
+                    document
+                        .getElementById("rosa")
+                        .classList.add("animar");
+
+                }, 100);
+
+
+                // Mostrar mensaje
+
+                setTimeout(function() {
+
+                    document
+                        .getElementById("mensaje")
+                        .classList.add("mostrar");
+
+                }, 4500);
+
+
+            }, 1500);
+
+        }
+
+    </script>
+</body>
+</html>
+```
